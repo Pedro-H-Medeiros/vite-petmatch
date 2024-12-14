@@ -6,8 +6,8 @@ export function AuthLayout() {
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center bg-paw-background bg-cover bg-center bg-no-repeat">
-      <div className="m-2 h-[34.125rem] w-[25.5625rem] rounded-2xl bg-gradient-to-b from-[#A5CC7A] via-[#B9D797] to-[#C2DCA4] p-2">
-        <div className="h-full rounded-xl bg-white">
+      <div className="m-2 w-[25.5625rem] rounded-2xl bg-gradient-to-b from-[#A5CC7A] via-[#B9D797] to-[#C2DCA4] p-2">
+        <div className="h-full rounded-xl bg-white py-4">
           <div className="flex h-full flex-col items-center justify-center px-12">
             <Outlet />
 
@@ -24,14 +24,14 @@ export function AuthLayout() {
             <p className="pt-6 font-Inter text-xs text-brown-700">
               {pathname === '/sign-in' ? (
                 <>
-                  Já Possui conta?{' '}
+                  Ainda não tenho conta!{' '}
                   <a href="/sign-up" className="font-extrabold">
                     Cadastrar
                   </a>
                 </>
               ) : (
                 <>
-                  Ainda não tenho conta!{' '}
+                  Já Possui conta?{' '}
                   <a href="/sign-in" className="font-extrabold">
                     Login
                   </a>

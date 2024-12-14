@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
 import { signUp } from '@/api/sign-up'
+import { ErrorMessageInput } from '@/components/error-message-input'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
@@ -13,6 +14,7 @@ interface signUpFormInput {
   cpf: string
   email: string
   password: string
+  role: 'MEMBER' | 'ADMIN' | 'ONG_ADMIN' | 'USER'
 }
 export function SignUp() {
   const navigate = useNavigate()
@@ -34,8 +36,6 @@ export function SignUp() {
         cpf: data.cpf,
         email: data.email,
         password: data.password,
-        phone: '123456789',
-        imageUrl: 'http://example.com',
         role: 'USER',
       })
 
@@ -56,17 +56,22 @@ export function SignUp() {
         onSubmit={handleSubmit(handleSignUp)}
       >
         <div className="flex flex-col">
-          <Label htmlFor="username" className="flex-1 text-xs text-gray-400/50">
+          <Label htmlFor="name" className="flex-1 text-xs text-gray-400/50">
             Nome:
           </Label>
           <Input
-            id="username"
+            id="name"
             type="text"
             className="h-10 select-none rounded-sm border border-gray-400 pl-2 outline-none"
-            {...register('name', { required: true })}
+            {...register('name', { required: 'Este campo é obrigatório.' })}
           />
-          <ErrorMessage errors={errors} name="name" />
+          <ErrorMessage
+            errors={errors}
+            name="name"
+            render={({ message }) => <ErrorMessageInput error={message} />}
+          />
         </div>
+
         <div className="flex flex-col">
           <Label htmlFor="cpf" className="flex-1 text-xs text-gray-400/50">
             CPF/CNPJ:
@@ -75,10 +80,15 @@ export function SignUp() {
             id="cpf"
             type="text"
             className="h-10 select-none rounded-sm border border-gray-400 pl-2 outline-none"
-            {...register('cpf', { required: true })}
+            {...register('cpf', { required: 'Este campo é obrigatório.' })}
           />
-          <ErrorMessage errors={errors} name="cpf" />
+          <ErrorMessage
+            errors={errors}
+            name="cpf"
+            render={({ message }) => <ErrorMessageInput error={message} />}
+          />
         </div>
+
         <div className="flex flex-col">
           <Label htmlFor="email" className="text-xs text-gray-400/50">
             Email:
@@ -87,9 +97,15 @@ export function SignUp() {
             id="email"
             type="email"
             className="h-10 select-none rounded-sm border border-gray-400 pl-2 outline-none"
-            {...register('email', { required: true })}
+            {...register('email', { required: 'Este campo é obrigatório.' })}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="email"
+            render={({ message }) => <ErrorMessageInput error={message} />}
           />
         </div>
+
         <div className="flex flex-col">
           <Label htmlFor="password" className="text-xs text-gray-400/50">
             Senha:
@@ -98,7 +114,18 @@ export function SignUp() {
             id="password"
             type="password"
             className="h-10 select-none rounded-sm border border-gray-400 pl-2 outline-none"
-            {...register('password', { required: true })}
+            {...register('password', {
+              required: 'Este campo é obrigatório.',
+              minLength: {
+                value: 8,
+                message: 'A senha deve conter no mínimo 8 caracteres.',
+              },
+            })}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="password"
+            render={({ message }) => <ErrorMessageInput error={message} />}
           />
         </div>
         <button className="mt-5 w-full rounded-md bg-brown-700 py-4 text-xs font-medium text-white transition-all hover:bg-brown-900">
