@@ -7,7 +7,7 @@ interface AdoptPetCardProps {
     ong_id: string
     name: string
     age: string
-    sex: 'Male' | 'Female'
+    sex: 'male' | 'female'
     race: string
     color: string
     adoption_status: 'AVAILABLE' | 'PENDING' | 'ADOPTED'
@@ -38,7 +38,7 @@ export function AdoptPetCard({ pet }: AdoptPetCardProps) {
             {pet.name}
           </h1>
           <div className="text-sm font-medium">
-            {pet.sex === 'Male' ? <p>Macho</p> : <p>Fêmea</p>}
+            {pet.sex === 'male' ? <p>Macho</p> : <p>Fêmea</p>}
             <p>{pet.race}</p>
             <p>
               {formatDistanceToNowStrict(pet.age, {

@@ -1,12 +1,19 @@
 import { api } from '@/lib/axios'
 
-interface GetPetsResponse {
+export interface GetPetsQuery {
+  type?: string | null
+  sex?: string | null
+  weight?: string | null
+  age?: string | null
+}
+
+export interface GetPetsResponse {
   pets: {
     id: string
     ong_id: string
     name: string
     age: string
-    sex: 'Male' | 'Female'
+    sex: 'male' | 'female'
     race: string
     color: string
     adoption_status: 'AVAILABLE' | 'PENDING' | 'ADOPTED'
@@ -15,8 +22,15 @@ interface GetPetsResponse {
   }[]
 }
 
-export async function getPets() {
-  const response = await api.get<GetPetsResponse>('/pets')
+export async function getPets({ type, sex, weight, age }: GetPetsQuery) {
+  const response = await api.get<GetPetsResponse>('/pets', {
+    params: {
+      type,
+      sex,
+      weight,
+      age,
+    },
+  })
 
   return response.data
 }
