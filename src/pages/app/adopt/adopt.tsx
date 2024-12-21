@@ -1,5 +1,5 @@
 import { AdoptFilters } from './adopt-filters'
-import { AdoptPetList } from './adpot-pet-list'
+import { AdoptPetList } from './pet/adpot-pet-list'
 
 export function AdoptPage() {
   return (

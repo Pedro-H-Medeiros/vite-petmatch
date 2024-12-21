@@ -36,7 +36,7 @@ export function SignUp() {
         cpf: data.cpf,
         email: data.email,
         password: data.password,
-        role: 'USER',
+        role: 'ADMIN',
       })
 
       toast.success('Usuário cadastrado.')

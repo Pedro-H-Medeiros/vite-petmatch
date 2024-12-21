@@ -8,7 +8,7 @@ export function AppLayout() {
       <div className="flex min-h-screen flex-col antialiased">
         <Header />
 
-        <div className="bg-paw-background bg-cover bg-fixed bg-no-repeat">
+        <div className="h-dvh bg-paw-background bg-cover bg-no-repeat">
           <div className="flex flex-1 flex-col px-36">
             <Outlet />
           </div>

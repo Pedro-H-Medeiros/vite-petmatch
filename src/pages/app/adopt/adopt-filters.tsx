@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+import { NavLink, useSearchParams } from 'react-router-dom'
 
 export function AdoptFilters() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -151,6 +151,14 @@ export function AdoptFilters() {
             />
             <label htmlFor="less_than_six_months">Menos de 6 meses</label>
           </div>
+        </div>
+        <div className="mb-6 mt-10">
+          <NavLink
+            to="register"
+            className="rounded-3xl bg-brown-900 px-4 py-2 font-Inter text-white"
+          >
+            Criar anúncio
+          </NavLink>
         </div>
       </div>
     </div>

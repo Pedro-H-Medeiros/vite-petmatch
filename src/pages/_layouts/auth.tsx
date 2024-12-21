@@ -5,8 +5,8 @@ export function AuthLayout() {
   const { pathname } = useLocation()
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center bg-paw-background bg-cover bg-center bg-no-repeat">
-      <div className="m-2 w-[25.5625rem] rounded-2xl bg-gradient-to-b from-[#A5CC7A] via-[#B9D797] to-[#C2DCA4] p-2">
+    <div className="flex h-dvh w-full flex-col items-center justify-center bg-paw-background bg-cover bg-center bg-no-repeat">
+      <div className="m-2 w-auto rounded-2xl bg-gradient-to-b from-[#A5CC7A] via-[#B9D797] to-[#C2DCA4] p-2 md:w-[25.5625rem]">
         <div className="h-full rounded-xl bg-white py-4">
           <div className="flex h-full flex-col items-center justify-center px-12">
             <Outlet />

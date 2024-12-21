@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { getPets } from '@/api/get-pets'
 
-import { AdoptPetCard } from './adopt-pet-card'
+import { AdoptPetCard } from '../adopt-pet-card'
 
 export function AdoptPetList() {
   const [searchParams] = useSearchParams()
@@ -22,11 +22,10 @@ export function AdoptPetList() {
     queryKey: ['pets', type, sex, age],
   })
 
-  console.log(result)
-
   return (
     <div className="flex w-[53.6875rem] flex-wrap gap-5">
-      {!result && <h1>Não há animais cadastrados.</h1>}
+      {!result ||
+        (result.pets.length === 0 && <h1>Não há animais cadastrados.</h1>)}
       {result &&
         result.pets.map((pet) => <AdoptPetCard key={pet.id} pet={pet} />)}
     </div>

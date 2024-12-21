@@ -21,6 +21,7 @@ export default {
         },
         gray: {
           400: '#989CAA',
+          600: '#828282',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
